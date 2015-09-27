@@ -4,19 +4,28 @@ $(document).ready(function() {
         var cols = $("[name='cols']").val();
 
         if (validate_input(rows, cols)) {
-            result = generate_bootstrp_grid_structure(rows, cols);
+            result = generate_bootstrap_grid_structure(parseInt(rows), parseInt(cols));
+            // result = generate_html_table_structure(parseInt(rows), parseInt(cols));
             copy_text(result["code"]);
             $("#result").html(result["msg"]);
-        }
-        else{
-            $("#result").html("Invalid Input !!");
         }
     });
 });
 
 validate_input = function(rows, cols){
     // validate input from user
-    return true
+    var result = false
+
+    if (/^[1-9]*$/.test(rows) && /^[1-9]*$/.test(cols)){
+        if(cols > 12)
+            $("#result").html("Number of columns per row can not exceed 12");
+        else
+            result = true
+    }
+    else
+        $("#result").html("Invalid Input");
+
+    return result
 }
 
 copy_text = function(text){
@@ -27,11 +36,50 @@ copy_text = function(text){
     $temp.remove();
 }
 
-generate_bootstrp_grid_structure = function(rows, cols){
+generate_bootstrap_grid_structure = function(rows, cols){
+    var code = ""
+    var msg = "Bootstrap grid structure code is copied please paste the code to text editor .."
+    var col_cls = 12%cols == 0? "col-xs-"+12/cols:"col-xs-";
+
+    // Generate Grid Structure
+    for (var i = 0; i < rows; i++) {
+        code += "<div class='row'>";
+        for (var j = 0; j < cols; j++) {
+            code += "\n\t<div class='"+ col_cls +"'>\n\t</div>";
+        }
+        code += "\n</div>\n";
+    }
+
+    return {
+        "code":code,
+        "msg": msg
+    }
+}
+
+// get_column_cls = function(cols){
+//     if(12%cols == 0)
+//         return "col-xs-"12/cols;
+//     else
+//         return "col-xs-"
+// }
+
+generate_html_table_structure = function(rows, cols){
     var code = ""
     var msg = "Bootstrap grid structure code is copied please paste the code to text editor .."
 
-    // Generate Grid Structure
+    // Creating Table Stucture
+    code = "<table>\n\t<thead>";
+    rows += 1;
+    for (var i = 0; i < rows; i++) {
+        code += (i == 1)? "\n<tbody>": ""
+        code += "\n\t\t<tr>"
+        for (var j = 0; j < cols; j++) {
+            code += (i == 0)? "\n\t\t\t<th></th>": "\n\t\t\t<td></td>"
+        }
+        code += "\n\t\t</tr>"
+        code += (i == 0)? "\n</thead>": (i == rows)? "\n</tbody>":""
+    }
+    code += "\n</table>"
 
     return {
         "code":code,
