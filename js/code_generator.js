@@ -71,16 +71,15 @@ generate_html_table_structure = function(rows, cols){
     code = "<table>\n\t<thead>";
     rows += 1;
     for (var i = 0; i < rows; i++) {
-        code += (i == 1)? "\n<tbody>": ""
+        code += (i == 1)? "\n\t<tbody>": ""
         code += "\n\t\t<tr>"
         for (var j = 0; j < cols; j++) {
             code += (i == 0)? "\n\t\t\t<th></th>": "\n\t\t\t<td></td>"
         }
         code += "\n\t\t</tr>"
-        code += (i == 0)? "\n</thead>": (i == rows)? "\n</tbody>":""
+        code += (i == 0)? "\n\t</thead>": (i == rows-1)? "\n\t</tbody>":""
     }
     code += "\n</table>"
-
     return {
         "code":code,
         "msg": msg
