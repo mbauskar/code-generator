@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Code Generator</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" /> -->
 </head>
 
 <body>
@@ -13,26 +14,16 @@
         </div>
         <table border="0">
             <tr>
-                <td>
-                    <div class="app-title">
-                        <h3>Rows</h3>
-                    </div>
-                </td>
+                <td><div class="app-title"><h3>Rows</h3></div></td>
                 <td><input type="text" name="rows" placeholder="Number Of Rows"></td>
             </tr>
             <tr>
-                <td>
-                    <div class="app-title">
-                        <h3>Columns</h3>
-                    </div>
-                </td>
-                <td><input type="text" name="cols" placeholder="Number Of Columns"></td>
+                <td><div class="app-title"><h3>Columns</h3></div></td>
+                <td><input class="input-custom" type="text" name="cols" placeholder="Number Of Columns"></td>
             </tr>
             <tr>
                 <td></td>
-                <td>
-                    <a class="btn" href="#" id="generate_code" align="center">Generate Code</a>
-                </td>
+                <td><a class="btn" href="#" id="generate_code" align="center">Generate Code</a></td>
             </tr>
             <tr>
                 <td colspan="2"><br><div id="result" class="app-result"></div></td>
