@@ -1,37 +1,79 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Code Generator</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" /> -->
 </head>
 
 <body align="center">
-    <!-- <div id="mainPopup"> -->
-        <div class="app-title">
-            <h1>Bootstrap Grids</h1>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">HTML <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" id="html_table_structure">Tables</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bootstrap <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" id="bootstrap_grid_structure">Grid Structure</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading app-title" id="panel-heading"></div>
+                    <div class="panel-body">
+                        <div align="center">
+                            <form name="provider-login-form" class="form-login html-table bootstrap-grid">
+                                <div class="form-group">
+                                    <input type="text" id="rows" class="form-control" name="rows" placeholder="Number Of Rows" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="cols" placeholder="Number Of Columns" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <a class="btn btn-primary" href="#" id="generate_code" align="center" role="button">Generate Code</a>
+                                </div>
+                                <div class="form-group">
+                                    <div class="app-result" id="result"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading app-title">
+                        <h4><b>Result</b></h4>
+                    </div>
+                    <div class="panel-body" align="left">
+                        <textarea name="code-textarea" rows="8" cols="40" id="code" readonly></textarea>
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <div class="pull-center">
+                            <a href="#" class="btn btn-primary" id="clear-textbox" role="button">Clear</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div align="center">
-        <table border="0">
-            <tr>
-                <td><div class="app-title"><h3>Rows</h3></div></td>
-                <td><input type="text" name="rows" placeholder="Number Of Rows"></td>
-            </tr>
-            <tr>
-                <td><div class="app-title"><h3>Columns</h3></div></td>
-                <td><input class="input-custom" type="text" name="cols" placeholder="Number Of Columns"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><a class="btn" href="#" id="generate_code" align="center">Generate Code</a></td>
-            </tr>
-            <tr>
-                <td colspan="2"><br><div id="result" class="app-result"></div></td>
-            </tr>
-        </table>
     </div>
     <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/code_generator.js"></script>
 </body>
+
 </html>
