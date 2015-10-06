@@ -1,20 +1,20 @@
-// chrome.app.runtime.onLaunched.addListener(function() {
-//     // Center window on screen.
-//     var screenWidth = screen.availWidth;
-//     var screenHeight = screen.availHeight;
-//     var width = 500;
-//     var height = 300;
-//
-//     chrome.app.window.create('popup.html', {
-//         id: "CodeGenID",
-//         outerBounds: {
-//             width: width,
-//             height: height,
-//             left: Math.round((screenWidth - width) / 2),
-//             top: Math.round((screenHeight - height) / 2)
-//         }
-//     });
-// });
+chrome.app.runtime.onLaunched.addListener(function() {
+    // Center window on screen.
+    var screenWidth = screen.availWidth;
+    var screenHeight = screen.availHeight;
+    var width = 500;
+    var height = 300;
+
+    chrome.app.window.create('popup.html', {
+        id: "CodeGenID",
+        outerBounds: {
+            width: width,
+            height: height,
+            left: Math.round((screenWidth - width) / 2),
+            top: Math.round((screenHeight - height) / 2)
+        }
+    });
+});
 
 window.methods = {}
 var cli = "generate_html_table_structure"
@@ -44,7 +44,7 @@ methods.bind_events = function(){
             result = methods[cli](args);
             copy_text(result["code"]);
             $("#result").html(result["msg"]);
-            $("#code").html(result["code"]);
+            $("#code").val(result["code"]);
         }
     });
 
@@ -53,13 +53,17 @@ methods.bind_events = function(){
     })
 
     $("#html_table_structure").on('click', function(e){
-        cli = "generate_html_table_structure"
-        $("#panel-heading").html(headings["html_table"])
+        cli = "generate_html_table_structure";
+        $("#panel-heading").html(headings["html_table"]);
+
+        clear_code();
     })
 
     $("#bootstrap_grid_structure").on('click', function(e){
-        cli = "generate_bootstrap_grid_structure"
-        $("#panel-heading").html(headings["grids"])
+        cli = "generate_bootstrap_grid_structure";
+        $("#panel-heading").html(headings["grids"]);
+
+        clear_code();
     })
 }
 
