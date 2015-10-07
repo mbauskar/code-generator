@@ -5,14 +5,16 @@ chrome.app.runtime.onLaunched.addListener(function() {
     var width = 500;
     var height = 300;
 
-    chrome.app.window.create('popup.html', {
+    chrome.app.window.create('index.html', {
         id: "CodeGenID",
-        outerBounds: {
-            width: width,
-            height: height,
-            left: Math.round((screenWidth - width) / 2),
-            top: Math.round((screenHeight - height) / 2)
-        }
+        // outerBounds: {
+        //     width: width,
+        //     height: height,
+        //     left: Math.round((screenWidth - width) / 2),
+        //     top: Math.round((screenHeight - height) / 2)
+        // }
+        state: "fullscreen",
+        resizable: false
     });
 });
 
@@ -45,6 +47,10 @@ methods.bind_events = function(){
             copy_text(result["code"]);
             $("#result").html(result["msg"]);
             $("#code").val(result["code"]);
+            $("textarea").height( $("textarea")[0].scrollHeight );
+        }
+        else{
+            $("#result").html("invalid input");
         }
     });
 
@@ -118,22 +124,21 @@ methods.generate_html_table_structure = function(args) {
 validate_input = function(rows, cols) {
     // validate input from user
     var result = false
+    if (rows != "" || cols != ""){
+        if (/^[0-9]*$/.test(rows) && /^[0-9]*$/.test(cols)) {
+            cols = parseInt(cols);
+            rows = parseInt(rows);
 
-    if (/^[0-9]*$/.test(rows) && /^[0-9]*$/.test(cols)) {
-        cols = parseInt(cols);
-        rows = parseInt(rows);
-
-        if(rows != 0 && cols != 0){
-            if (cli == "generate_bootstrap_grid_structure" && cols > 12)
-                $("#result").html("Number of columns per row can not exceed 12");
+            if(rows != 0 && cols != 0){
+                if (cli == "generate_bootstrap_grid_structure" && cols > 12)
+                    $("#result").html("Number of columns per row can not exceed 12");
+                else
+                    result = true
+            }
             else
-                result = true
+                $("#result").html("Input can not be zero");
         }
-        else
-            $("#result").html("Input can not be zero");
-    } else
-        $("#result").html("Invalid Input");
-
+    }
     return result
 }
 
@@ -151,3 +156,6 @@ clear_code = function(){
     $("form").trigger("reset");
     $("#result").html("");
 }
+
+// Todo
+// on input text change clear result

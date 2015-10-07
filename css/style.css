@@ -25,13 +25,14 @@
     font-family: arial;
     font-size: 11px;
 }
+
 .btn {
     border: 2px solid transparent;
     background: #3498DB;
     color: #ffffff;
-    font-size: 16px;
-    line-height: 25px;
-    padding: 10px 0;
+    /*font-size: 16px;*/
+    /*line-height: 25px;*/
+    /*padding: 10px 0;*/
     text-decoration: none;
     text-shadow: none;
     border-radius: 3px;
@@ -43,4 +44,9 @@
 }
 .btn:hover {
     background-color: #2980B9;
+}
+textarea{
+    width: 100%;
+    max-height: 500px;
+    resize: vertical;
 }

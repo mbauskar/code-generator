@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>Code Generator</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
-
 <body align="center">
-    <div class="container">
+    <div class="container-fluid">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -36,15 +34,15 @@
                     <div class="panel-heading app-title" id="panel-heading"></div>
                     <div class="panel-body">
                         <div align="center">
-                            <form name="provider-login-form" class="form-login html-table bootstrap-grid">
+                            <form name="provider-login-form" data-toggle="validator" class="form-login html-table bootstrap-grid">
                                 <div class="form-group">
-                                    <input type="text" id="rows" class="form-control" name="rows" placeholder="Number Of Rows" required autofocus>
+                                    <input type="text" id="rows" class="form-control" name="rows" placeholder="Number Of Rows" data-error="Number Of Rows Required" required autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="cols" placeholder="Number Of Columns" required autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <a class="btn btn-primary" href="#" id="generate_code" align="center" role="button">Generate Code</a>
+                                    <a class="btn btn-primary" href="#" id="generate_code" align="left" role="button">Generate Code</a>
                                 </div>
                                 <div class="form-group">
                                     <div class="app-result" id="result"></div>
@@ -60,7 +58,7 @@
                         <h4><b>Result</b></h4>
                     </div>
                     <div class="panel-body" align="left">
-                        <textarea name="code-textarea" rows="8" cols="60" id="code" readonly></textarea>
+                        <textarea name="code-textarea" rows="8" cols="60" id="code" width="100%" readonly></textarea>
                     </div>
                     <div class="panel-footer clearfix">
                         <div class="pull-center">
@@ -75,5 +73,4 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/code_generator.js"></script>
 </body>
-
 </html>
